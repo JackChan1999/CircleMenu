@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
+
+    <com.jackchan.circlemenu.CircleMenu
+        android:id="@+id/cm"
+        android:layout_width="480dp"
+        android:layout_height="480dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circle_bg3"/>
+</RelativeLayout>
