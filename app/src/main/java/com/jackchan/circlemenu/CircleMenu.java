@@ -3,7 +3,6 @@ package com.jackchan.circlemenu;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -149,12 +148,10 @@ public class CircleMenu extends ViewGroup {
 		float y = event.getY();
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
-				Log.i("test", "ACTION_DOWN");
 				lastX = x;
 				lastY = y;
 				break;
 			case MotionEvent.ACTION_MOVE:
-				Log.i("test", "ACTION_MOVE");
 				float start = CircleUtil.getAngle(lastX, lastY, d);
 				float end = CircleUtil.getAngle(x, y, d);
 				float angle;
@@ -172,8 +169,6 @@ public class CircleMenu extends ViewGroup {
 
 				break;
 			case MotionEvent.ACTION_UP:
-				Log.i("test", "ACTION_UP");
-
 				break;
 		}
 		//return true 表示当前控件想要处理事件,如果没有其他控件想要处理,则所有的MotionEvent事件都会交给自己处理
