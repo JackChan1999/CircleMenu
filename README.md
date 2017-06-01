@@ -1,10 +1,12 @@
-## 自定义控件之圆形菜单
+## 自定义控件之圆形菜单/摩天轮控件
 
 <img src="art/circlemenu.jpg" width="300" />
 
 ## layout
 
 如图所示，按钮之间的角度差等于360/按钮数，这里的角度差就是60度。根据几何知识可以算出每个按钮的左上右下坐标
+
+![](art/摩天轮控件分析.png)
 
 ![](art/circlemenu2.png)
 
@@ -347,7 +349,3 @@ public boolean onTouchEvent(MotionEvent event) {
    return true;
 }
 ```
-
-## 摩天轮控件分析
-
-![](art/摩天轮控件分析.png)
