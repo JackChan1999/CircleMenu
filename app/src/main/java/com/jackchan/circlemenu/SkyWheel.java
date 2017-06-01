@@ -63,6 +63,21 @@ public class SkyWheel extends ViewGroup {
             }
 
             /**
+             * 手指点击一次的时候调用一次
+             * @param e
+             * @return
+             */
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                // 点击时，判断当前点是否被某个子控件包含，如果包含直接调用子控件的点击事件即可
+                int index = getClickPosition(e);
+                if (index > -1){
+                    getChildAt(index).performClick();// 强制让当前的控件的点击事件执行
+                }
+                return false;
+            }
+
+            /**
              * 
              * @param e1 按下事件 action—_down
              * @param e2 move事件，最近一次的action_move
@@ -107,6 +122,18 @@ public class SkyWheel extends ViewGroup {
                 return false;
             }
         });
+    }
+
+    private int getClickPosition(MotionEvent e) {
+        // 遍历每个子控件是否包含当前点
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            RectF rect = new RectF(child.getLeft(),child.getTop(),child.getRight(),child.getBottom());
+            if (rect.contains(e.getX(),e.getY())){
+                return i;
+            }
+        }
+        return -1;
     }
 
     private void startFlingAnimation(double velocityAfter1s) {
@@ -199,6 +226,11 @@ public class SkyWheel extends ViewGroup {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mDetector.onTouchEvent(event);
+        return true;
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
         return true;
     }
 }
